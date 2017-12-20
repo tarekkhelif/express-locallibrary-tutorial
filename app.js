@@ -19,7 +19,7 @@ const app = express();
 app.use(helmet());
 
 // Set up mongoose connection
-const mongoDB = 'mongodb://localhost:27017/local_library'; // 'mongodb://admin:admin@ds135926.mlab.com:35926/local_library'; 
+const mongoDB = process.env.MONGODB_URI || 'mongodb://admin:admin@ds135926.mlab.com:35926/local_library'; // 'mongodb://localhost:27017/local_library'; // 
 mongoose.connect(mongoDB, {useMongoClient: true});
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
